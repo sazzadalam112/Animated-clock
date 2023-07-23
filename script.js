@@ -11,7 +11,7 @@ function clock() {
 
     // set default style 
     ctx.strokeStyle ='red';
-    ctx.fillStyle ='white';
+    ctx.fillStyle ='yellow';
     ctx.linewidth = 5;
     ctx.lineCap = 'round';
 
@@ -74,8 +74,41 @@ function clock() {
 
   ctx.restore();
 
+   // draw minute hand 
+   ctx.save();
+   ctx.rotate(
+     (Math.PI / 30) * min + (Math.PI/1800) * sec);
+     ctx.strokeStyle = 'green';
+     ctx.linewidth = 10;
+     ctx.beginPath();
+     ctx.moveTo(-28,0);
+     ctx.lineTo(112,0);
+     ctx.stroke();
+     
+ 
+   ctx.restore();
+
+   // draw second hand 
+   ctx.save();
+   ctx.rotate((sec * Math.PI) / 30);
+     ctx.strokeStyle = '#FF7F50';
+     ctx.fillStyle ='#FF7F50';
+     ctx.linewidth = 6;
+     ctx.beginPath();
+     ctx.moveTo(-30,0);
+     ctx.lineTo(100,0);
+     ctx.stroke();
+     ctx.beginPath();
+     ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+     ctx.fill();
+     
+ 
+   ctx.restore();
+ 
+
   ctx.restore(); //restore default state 
 
+  requestAnimationFrame(clock);
 }
 
-clock();
+requestAnimationFrame(clock);
