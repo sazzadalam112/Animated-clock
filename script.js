@@ -130,4 +130,4 @@ document.getElementById('save-btn').addEventListener('click',() => {
   link.download = 'clock.png';
   link.href = dataURL;
   link.click();
-});
+}); 
